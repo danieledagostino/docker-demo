@@ -11,7 +11,7 @@ public class HelloController {
 
 	@GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<String> mainPage(@PathVariable("name") String name) {
+	public ResponseEntity<String> mainPage() {
 
 		return new ResponseEntity<>("All work", HttpStatus.OK);
 	}

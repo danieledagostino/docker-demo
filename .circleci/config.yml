@@ -19,9 +19,6 @@ jobs: # a collection of steps
       - checkout
  #     - run: ./mvnw test
   build: # runs not using Workflows must have a `build` job as entry point
-    steps:
-      -
-    machine:
     docker:
       - image: circleci/openjdk:stretch
         auth:

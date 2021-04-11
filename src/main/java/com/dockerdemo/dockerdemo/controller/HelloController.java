@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("")
 public class HelloController {
 
+	@GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<String> mainPage(@PathVariable("name") String name) {
+
+		return new ResponseEntity<>("All work", HttpStatus.OK);
+	}
 
 	@GetMapping(value = "/hi/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

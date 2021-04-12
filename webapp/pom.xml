@@ -6,13 +6,12 @@
 	<parent>
 		<groupId>com.dockerdemo</groupId>
 		<artifactId>docker-demo</artifactId>
-		<packaging>pom</packaging>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	
 	<groupId>com.dockerdemo</groupId>
 	<artifactId>docker-demo-web-app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>docker-demo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>

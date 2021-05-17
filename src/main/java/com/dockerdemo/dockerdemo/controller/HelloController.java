@@ -39,4 +39,16 @@ public class HelloController {
 		return new ResponseEntity<>(response.getBody(), HttpStatus.OK);
 	}
 
+	@PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<String> login(@RequestBody String name) {
+
+		RestTemplate restTemplate = new RestTemplate();
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		HttpEntity<String> request = new HttpEntity<String>(name, headers);
+
+		return new ResponseEntity<>("Autenticazione riuscita", HttpStatus.OK);
+	}
+
 }

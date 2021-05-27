@@ -16,6 +16,7 @@ public class User {
     private String surname;
     private String password;
     private String role;
+    private String token;
 
     @Lob
     private byte[] photoId;
@@ -83,5 +84,13 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

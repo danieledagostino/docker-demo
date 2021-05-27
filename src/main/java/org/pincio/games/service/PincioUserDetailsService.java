@@ -1,5 +1,6 @@
 package org.pincio.games.service;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.pincio.games.dto.MyUserPrincipal;
 import org.pincio.games.dto.UserDto;
 import org.pincio.games.model.User;
@@ -40,14 +41,33 @@ public class PincioUserDetailsService  implements UserDetailsService {
         newUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         newUser.setSurname(user.getLastName());
         newUser.setRole("USER");
-        newUser.setValid(false);
+        //newUser.setValid(false); TODO to uncomment in prod
+        newUser.setValid(true);
+
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()[{]};:";
+        String token = RandomStringUtils.random( 15, characters );
+
+        newUser.setToken(token);
 
         try {
             userRepository.save(newUser);
+
+            //sendEmail
         } catch (Exception e) {
             return e.getMessage();
         }
 
         return "OK";
     }
+
+    public void emailConfirmation(String token) {
+        User user = userRepository.findByToken(token);
+
+        if (user != null) {
+            user.setToken("");
+            user.setValid(true);
+            userRepository.save(user);
+        }
+    }
+
 }

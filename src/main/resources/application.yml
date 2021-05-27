@@ -4,8 +4,37 @@ server:
   port: ${PORT:8080}
 
 spring:
+  profiles:
+    active: dev
   application:
-    name: dd-docker-demo-web
+    name: pincio-games
+
+---
+spring:
+  profiles: dev
+  datasource:
+    #initialization-mode: always
+    password: ${DB_PW}
+    platform: postgres
+    url: ${DB_URL}
+    username: ${DB_USER}
+    driverClassName: org.postgresql.Driver
+    hikari:
+      #connection-timeout: 30000
+      idle-timeout: 120000
+      max-lifetime: 120000
+      maximum-pool-size: 3
+    jpa:
+      hibernate:
+        ddl-auto: create
+      properties:
+        hibernate:
+          format_sql: true
+          dialect: org.hibernate.dialect.PostgreSQL9Dialect
+          jdbc:
+            lob:
+              non_contextual_creation: true
+      show-sql: false
     
 #eureka:
 #  client:
@@ -16,3 +45,29 @@ spring:
 #    hostname: ${DOMAIN_NAME:localhost}
 #    nonSecurePort: 80
 #  password: ${EUREKA_USER_PASSWORD:password}
+
+---
+
+spring:
+  profiles: test
+  datasource:
+    platform: h2
+    initialization-mode: always
+  h2:
+    console:
+      enabled: true
+    #datasource:
+    #  url: jdbc:h2:mem:dbpincio;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;IFEXISTS=TRUE;MODE=PostgreSQL;INIT=CREATE SCHEMA IF NOT EXISTS;SCHEMA=PINCIO
+    #  username: sa
+    #  password:
+    #  driverClassName: org.h2.Driver
+  jpa:
+    databasePlatform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+#logging:
+#  level:
+#    root: ERROR
+#    org.hibernate: DEBUG

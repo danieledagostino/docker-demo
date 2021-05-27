@@ -2,6 +2,7 @@ package org.pincio.games.model;
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -21,6 +22,9 @@ public class User {
     @Lob
     private byte[] photoId;
     private boolean valid;
+
+    @OneToMany
+    private Set<Team> teams;
 
     public long getId() {
         return id;
@@ -92,5 +96,13 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public Set<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(Set<Team> teams) {
+        this.teams = teams;
     }
 }

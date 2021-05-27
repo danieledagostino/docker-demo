@@ -67,7 +67,7 @@ spring:
       ddl-auto: update
     show-sql: true
     generate-ddl: true
-#logging:
-#  level:
-#    root: ERROR
-#    org.hibernate: DEBUG
+logging:
+  level:
+    root: DEBUG
+    org.hibernate: ERROR

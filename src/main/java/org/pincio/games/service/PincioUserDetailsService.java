@@ -70,4 +70,13 @@ public class PincioUserDetailsService  implements UserDetailsService {
         }
     }
 
+    public String changePassword(UserDto user) {
+
+        return null;
+    }
+
+    public void askNewPassword(String email) {
+
+    }
+
 }

@@ -13,6 +13,8 @@ public class UserDto {
     @NotEmpty
     private String lastName;
 
+    private String oldPassword;
+
     @NotNull
     @NotEmpty
     private String password;
@@ -60,5 +62,13 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
     }
 }

@@ -39,17 +39,18 @@ spring:
       max-lifetime: 120000
       maximum-pool-size: 3
     jpa:
+      databasePlatform: org.hibernate.dialect.H2Dialect
       hibernate:
         ddl-auto: update
-      properties:
+      show-sql: true
+      generate-ddl: true
         hibernate:
           format_sql: true
           dialect: org.hibernate.dialect.PostgreSQLDialect
           jdbc:
             lob:
               non_contextual_creation: true
-      show-sql: false
-    
+
 #eureka:
 #  client:
 #    serviceUrl:

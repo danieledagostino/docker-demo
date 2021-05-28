@@ -9,8 +9,6 @@ server:
   port: ${PORT:8080}
 
 spring:
-  profiles:
-    active: dev
   application:
     name: pincio-games
   http:
@@ -36,12 +34,13 @@ spring:
       databasePlatform: org.hibernate.dialect.H2Dialect
       hibernate:
         ddl-auto: update
-        jdbc:
-          lob:
-            non_contextual_creation: true
       show-sql: true
       generate-ddl: true
-
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
 #eureka:
 #  client:
 #    serviceUrl:

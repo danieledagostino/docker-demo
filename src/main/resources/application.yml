@@ -1,5 +1,10 @@
 host: ${HOST:localhost}
 
+mail:
+  smtp: ${TRUSTIFI_URL:''}
+  key: ${TRUSTIFI_KEY:''}
+  secret: ${TRUSTIFI_SECRET:''}
+
 server:
   port: ${PORT:8080}
 
@@ -35,11 +40,11 @@ spring:
       maximum-pool-size: 3
     jpa:
       hibernate:
-        ddl-auto: create
+        ddl-auto: update
       properties:
         hibernate:
           format_sql: true
-          dialect: org.hibernate.dialect.PostgreSQL9Dialect
+          dialect: org.hibernate.dialect.PostgreSQLDialect
           jdbc:
             lob:
               non_contextual_creation: true

@@ -14,7 +14,7 @@ spring:
       enabled: true
   profiles: prod
   datasource:
-    #initialization-mode: always
+    initialization-mode: always
     password: ${DB_PW}
     platform: postgres
     url: ${DB_URL}

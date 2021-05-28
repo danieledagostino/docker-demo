@@ -25,13 +25,12 @@ spring:
       idle-timeout: 120000
       max-lifetime: 120000
       maximum-pool-size: 3
-    jpa:
-      databasePlatform: org.hibernate.dialect.H2Dialect
-      hibernate:
-        ddl-auto: update
-      show-sql: true
-      generate-ddl: true
   jpa:
+    databasePlatform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL-AUTO}
+    show-sql: true
+    generate-ddl: true
     properties:
       hibernate:
         temp:
@@ -47,7 +46,7 @@ spring:
 #  password: ${EUREKA_USER_PASSWORD:password}
 
 
-logging:
-  level:
-    root: ERROR
-    org.hibernate: DEBUG
+#logging:
+#  level:
+#    root: ERROR
+#    org.hibernate: DEBUG

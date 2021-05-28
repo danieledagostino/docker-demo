@@ -8,15 +8,15 @@ mail:
 server:
   port: ${PORT:8080}
 
+
+---
+
 spring:
   application:
     name: pincio-games
   http:
     multipart:
       enabled: true
-
----
-spring:
   profiles: dev
   datasource:
     #initialization-mode: always
@@ -54,6 +54,11 @@ spring:
 ---
 
 spring:
+  application:
+    name: pincio-games
+  http:
+    multipart:
+      enabled: true
   profiles: test
   datasource:
     platform: h2

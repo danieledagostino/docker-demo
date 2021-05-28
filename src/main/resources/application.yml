@@ -12,6 +12,7 @@ spring:
   http:
     multipart:
       enabled: true
+  profiles: prod
   datasource:
     #initialization-mode: always
     password: ${DB_PW}
@@ -46,7 +47,7 @@ spring:
 #  password: ${EUREKA_USER_PASSWORD:password}
 
 
-#logging:
-#  level:
-#    root: ERROR
-#    org.hibernate: DEBUG
+logging:
+  level:
+    root: ERROR
+    org.hibernate: DEBUG

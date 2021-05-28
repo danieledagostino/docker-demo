@@ -1,12 +1,3 @@
-mail:
-  smtp: ${TRUSTIFI_URL:''}
-  key: ${TRUSTIFI_KEY:''}
-  secret: ${TRUSTIFI_SECRET:''}
-
-server:
-  port: ${PORT:8080}
-
-
 spring:
   application:
     name: pincio-games

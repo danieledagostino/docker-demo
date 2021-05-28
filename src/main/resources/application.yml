@@ -11,6 +11,11 @@ spring:
   http:
     multipart:
       enabled: true
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
 
 ---
 spring:

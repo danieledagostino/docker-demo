@@ -2,22 +2,19 @@ package org.pincio.games.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.pincio.games.dto.UserDto;
-import org.pincio.games.service.PincioUserDetailsService;
+import org.pincio.games.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/api/public")
 public class LoginController {
 
 	@Autowired
-	PincioUserDetailsService userService;
+	UserService userService;
 
 	@GetMapping(value = "/check", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -55,4 +52,10 @@ public class LoginController {
 		return new ResponseEntity<String>(response.toString(), HttpStatus.OK);
 	}
 
+	@GetMapping(value = "/newPassword", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<String> newPassword(@RequestBody String email) {
+
+		return new ResponseEntity<String>("", HttpStatus.OK);
+	}
 }

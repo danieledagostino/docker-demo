@@ -1,5 +1,7 @@
 package org.pincio.games.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.math.BigDecimal;
 
 public class TeamDto {
@@ -12,6 +14,7 @@ public class TeamDto {
 
     private Integer typeId;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer partecipantNumber;
 
     private Integer kmDone;

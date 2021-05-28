@@ -1,5 +1,6 @@
 package org.pincio.games.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.pincio.games.model.Team;
 
 import javax.persistence.Lob;
@@ -8,8 +9,10 @@ import java.util.Date;
 
 public class RaceDataDto {
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Date startDatetime;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Date endDatetime;
 
     private byte[] startPhotogroup;

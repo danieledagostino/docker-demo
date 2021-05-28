@@ -13,13 +13,13 @@ import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
-@RolesAllowed("USER")
 @RequestMapping("/api/v1/teams")
 public class TeamController {
 
     @Autowired
     TeamOrganizationService service;
 
+    @RolesAllowed("MOD")
     @GetMapping(value = "/check", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> check() {
@@ -27,6 +27,7 @@ public class TeamController {
         return new ResponseEntity<>("All works", HttpStatus.OK);
     }
 
+    @RolesAllowed("MOD")
     @GetMapping(value = "/findAll", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<List<TeamDto>> findAll() {
@@ -35,6 +36,7 @@ public class TeamController {
                 service.loadAllTeams(), HttpStatus.OK);
     }
 
+    @RolesAllowed("USER")
     @GetMapping(value = "/findAll/{raceType}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<List<TeamDto>> findAllByRaceType(@PathVariable("raceType") Long raceType) {
@@ -43,6 +45,7 @@ public class TeamController {
                 service.loadAllTeamsByRaceType(raceType), HttpStatus.OK);
     }
 
+    @RolesAllowed("USER")
     @GetMapping(value = "/join", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> join(@RequestBody TeamDto dto) {

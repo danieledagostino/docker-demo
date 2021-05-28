@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.sql.SQLException;
 
 @Service
-public class PincioUserDetailsService  implements UserDetailsService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -73,6 +73,11 @@ public class PincioUserDetailsService  implements UserDetailsService {
 
     public void askNewPassword(String email) {
 
+    }
+
+    public String changeImageProfile(byte[] file) {
+
+        return null;
     }
 
 }

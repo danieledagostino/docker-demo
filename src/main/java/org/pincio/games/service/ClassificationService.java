@@ -6,6 +6,7 @@ import org.pincio.games.model.RaceData;
 import org.pincio.games.model.RaceType;
 import org.pincio.games.model.Team;
 import org.pincio.games.repository.RaceDataRepository;
+import org.pincio.games.repository.RaceTypeRepository;
 import org.pincio.games.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public class ClassificationService {
 
     @Autowired
     private TeamRepository teamRepository;
+
+    @Autowired
+    private RaceTypeRepository raceTypeRepository;
 
     public List<TeamDto> getLastByRace(Integer raceType) {
 
@@ -57,5 +61,10 @@ public class ClassificationService {
         }catch (Exception e) {
             return e.getMessage();
         }
+    }
+
+    public List<RaceType> getAllRaceTypes() {
+
+        return raceTypeRepository.findAll();
     }
 }

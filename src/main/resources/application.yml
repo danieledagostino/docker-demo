@@ -26,7 +26,7 @@ spring:
       max-lifetime: 120000
       maximum-pool-size: 3
   jpa:
-    databasePlatform: org.hibernate.dialect.H2Dialect
+    databasePlatform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: ${SPRING_JPA_HIBERNATE_DDL-AUTO}
     show-sql: true

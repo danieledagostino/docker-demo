@@ -1,8 +1,8 @@
-INSERT INTO USER VALUES(1, 'test1@pincio.it', 'Daniele1', '$2a$10$HKL2IWagq68w4WiWwmKyp.N9RumfjlOgedCnjfYP20/sWG6/Mh/8W', null, 'USER', 'Test', null, true);
-INSERT INTO USER VALUES(2, 'test2@pincio.it', 'Daniele2', '$2a$10$HKL2IWagq68w4WiWwmKyp.N9RumfjlOgedCnjfYP20/sWG6/Mh/8W', null, 'USER', 'Test', null, true);
-INSERT INTO USER VALUES(3, 'test3@pincio.it', 'Daniele3', '$2a$10$HKL2IWagq68w4WiWwmKyp.N9RumfjlOgedCnjfYP20/sWG6/Mh/8W', null, 'USER', 'Test', null, true);
-INSERT INTO USER VALUES(4, 'test4@pincio.it', 'Daniele4', '$2a$10$HKL2IWagq68w4WiWwmKyp.N9RumfjlOgedCnjfYP20/sWG6/Mh/8W', null, 'USER', 'Test', null, true);
-INSERT INTO USER VALUES(5, 'test5@pincio.it', 'Daniele5', '$2a$10$HKL2IWagq68w4WiWwmKyp.N9RumfjlOgedCnjfYP20/sWG6/Mh/8W', null, 'USER', 'Test', null, true);
+INSERT INTO PERSON VALUES(1, 'test1@pincio.it', 'Daniele1', '$2a$10$HKL2IWagq68w4WiWwmKyp.N9RumfjlOgedCnjfYP20/sWG6/Mh/8W', null, 'USER', 'Test', null, true);
+INSERT INTO PERSON VALUES(2, 'test2@pincio.it', 'Daniele2', '$2a$10$HKL2IWagq68w4WiWwmKyp.N9RumfjlOgedCnjfYP20/sWG6/Mh/8W', null, 'USER', 'Test', null, true);
+INSERT INTO PERSON VALUES(3, 'test3@pincio.it', 'Daniele3', '$2a$10$HKL2IWagq68w4WiWwmKyp.N9RumfjlOgedCnjfYP20/sWG6/Mh/8W', null, 'USER', 'Test', null, true);
+INSERT INTO PERSON VALUES(4, 'test4@pincio.it', 'Daniele4', '$2a$10$HKL2IWagq68w4WiWwmKyp.N9RumfjlOgedCnjfYP20/sWG6/Mh/8W', null, 'USER', 'Test', null, true);
+INSERT INTO PERSON VALUES(5, 'test5@pincio.it', 'Daniele5', '$2a$10$HKL2IWagq68w4WiWwmKyp.N9RumfjlOgedCnjfYP20/sWG6/Mh/8W', null, 'USER', 'Test', null, true);
 
 INSERT INTO RACE_TYPE VALUES(1, 'Skates', 25);
 INSERT INTO RACE_TYPE VALUES(2, 'Bike', 10);

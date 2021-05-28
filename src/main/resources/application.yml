@@ -16,12 +16,6 @@ spring:
   http:
     multipart:
       enabled: true
-  jpa:
-    properties:
-      hibernate:
-        jdbc:
-          lob:
-            non_contextual_creation: true
 
 ---
 spring:
@@ -42,14 +36,11 @@ spring:
       databasePlatform: org.hibernate.dialect.H2Dialect
       hibernate:
         ddl-auto: update
+        jdbc:
+          lob:
+            non_contextual_creation: true
       show-sql: true
       generate-ddl: true
-        hibernate:
-          format_sql: true
-          dialect: org.hibernate.dialect.PostgreSQLDialect
-          jdbc:
-            lob:
-              non_contextual_creation: true
 
 #eureka:
 #  client:

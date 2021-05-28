@@ -7,14 +7,12 @@ import java.util.Date;
 public class RaceData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-
 
     private Date startDatetime;
 
     private Date endDatetime;
-
 
     @Lob
     private byte[] startPhotogroup;

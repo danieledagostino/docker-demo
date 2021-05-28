@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 public class RaceType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(nullable = false, unique = true)

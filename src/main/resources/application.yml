@@ -8,6 +8,9 @@ spring:
     active: dev
   application:
     name: pincio-games
+  http:
+    multipart:
+      enabled: true
 
 ---
 spring:
@@ -67,7 +70,7 @@ spring:
       ddl-auto: update
     show-sql: true
     generate-ddl: true
-logging:
-  level:
-    root: DEBUG
-    org.hibernate: ERROR
+#logging:
+#  level:
+#    root: ERROR
+#    org.hibernate: DEBUG

@@ -1,5 +1,6 @@
 package org.pincio.games.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.pincio.games.dto.UserDto;
 import org.pincio.games.service.PincioUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/api/public")
@@ -34,15 +38,21 @@ public class LoginController {
 		return new ResponseEntity<>("Autenticazione riuscita", HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/subscribe", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/subscribe", produces = MediaType.APPLICATION_JSON_VALUE,
+			consumes = { MediaType.APPLICATION_JSON_VALUE,MediaType.MULTIPART_FORM_DATA_VALUE})
 	@ResponseBody
-	public ResponseEntity<String> subscribe(@RequestBody UserDto dto) {
+	public ResponseEntity<String> subscribe(@RequestParam("file") MultipartFile file, @RequestPart("user") String json) {
 
-		String response = userService.insertNewUser(dto);
+		Long response = new Long(0);
+		try {
+			UserDto dto = new ObjectMapper().readValue(json, UserDto.class);
+			dto.setProfileImage(file.getBytes());
+			response = userService.insertNewUser(dto);
+		}catch (Exception e) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
 
-		return new ResponseEntity<>(response, HttpStatus.OK);
+		return new ResponseEntity<String>(response.toString(), HttpStatus.OK);
 	}
-
-
 
 }

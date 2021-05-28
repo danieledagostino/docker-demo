@@ -24,6 +24,8 @@ public class UserDto {
     @NotEmpty
     private String email;
 
+    private byte[] profileImage;
+
     public String getFirstName() {
         return firstName;
     }
@@ -70,5 +72,13 @@ public class UserDto {
 
     public void setOldPassword(String oldPassword) {
         this.oldPassword = oldPassword;
+    }
+
+    public byte[] getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(byte[] profileImage) {
+        this.profileImage = profileImage;
     }
 }

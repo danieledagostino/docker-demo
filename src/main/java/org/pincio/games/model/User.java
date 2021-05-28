@@ -1,15 +1,14 @@
 package org.pincio.games.model;
 
 import javax.persistence.*;
-import java.sql.Blob;
 import java.util.Set;
 
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -26,11 +25,17 @@ public class User {
     @OneToMany
     private Set<Team> teams;
 
-    public long getId() {
+    public User() {}
+
+    public User(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

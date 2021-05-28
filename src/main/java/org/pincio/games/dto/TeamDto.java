@@ -4,15 +4,21 @@ import java.math.BigDecimal;
 
 public class TeamDto {
 
+    private Long teamId;
+
     private String teamName;
 
     private String type;
+
+    private Integer typeId;
 
     private Integer partecipantNumber;
 
     private Integer kmDone;
 
     private BigDecimal points;
+
+    private Long newJoiner;
 
     public TeamDto(String teamName, String type, Integer partecipantNumber) {
         this.teamName = teamName;
@@ -64,5 +70,29 @@ public class TeamDto {
 
     public void setKmDone(Integer kmDone) {
         this.kmDone = kmDone;
+    }
+
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public Long getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
+    }
+
+    public Long getNewJoiner() {
+        return newJoiner;
+    }
+
+    public void setNewJoiner(Long newJoiner) {
+        this.newJoiner = newJoiner;
     }
 }

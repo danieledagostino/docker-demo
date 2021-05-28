@@ -29,10 +29,10 @@ public class PincioUserDetailsService  implements UserDetailsService {
         return new MyUserPrincipal(user);
     }
 
-    public String insertNewUser(UserDto user) {
+    public Long insertNewUser(UserDto user) throws Exception {
 
         if (!user.getPassword().equals(user.getMatchingPassword())) {
-            return "Password not match";
+            throw new Exception("password not match");
         }
 
         User newUser = new User();
@@ -43,21 +43,17 @@ public class PincioUserDetailsService  implements UserDetailsService {
         newUser.setRole("USER");
         //newUser.setValid(false); TODO to uncomment in prod
         newUser.setValid(true);
+        newUser.setPhotoId(user.getProfileImage());
 
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()[{]};:";
         String token = RandomStringUtils.random( 15, characters );
 
         newUser.setToken(token);
 
-        try {
-            userRepository.save(newUser);
+        newUser = userRepository.save(newUser);
 
-            //sendEmail
-        } catch (Exception e) {
-            return e.getMessage();
-        }
-
-        return "OK";
+        return newUser.getId();
+        //sendEmail
     }
 
     public void emailConfirmation(String token) {

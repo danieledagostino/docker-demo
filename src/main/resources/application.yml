@@ -1,5 +1,3 @@
-host: ${HOST:localhost}
-
 mail:
   smtp: ${TRUSTIFI_URL:''}
   key: ${TRUSTIFI_KEY:''}
@@ -8,16 +6,12 @@ mail:
 server:
   port: ${PORT:8080}
 
-
----
-
 spring:
   application:
     name: pincio-games
   http:
     multipart:
       enabled: true
-  profiles: dev
   datasource:
     #initialization-mode: always
     password: ${DB_PW}
@@ -51,32 +45,7 @@ spring:
 #    nonSecurePort: 80
 #  password: ${EUREKA_USER_PASSWORD:password}
 
----
 
-spring:
-  application:
-    name: pincio-games
-  http:
-    multipart:
-      enabled: true
-  profiles: test
-  datasource:
-    platform: h2
-    initialization-mode: always
-  h2:
-    console:
-      enabled: true
-    #datasource:
-    #  url: jdbc:h2:mem:dbpincio;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;IFEXISTS=TRUE;MODE=PostgreSQL;INIT=CREATE SCHEMA IF NOT EXISTS;SCHEMA=PINCIO
-    #  username: sa
-    #  password:
-    #  driverClassName: org.h2.Driver
-  jpa:
-    databasePlatform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    generate-ddl: true
 #logging:
 #  level:
 #    root: ERROR

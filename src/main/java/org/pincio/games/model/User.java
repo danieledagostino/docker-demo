@@ -8,11 +8,8 @@ import java.util.Set;
 public class User {
 
     @Id
-    @SequenceGenerator(name="person_seq",
-            sequenceName="person_seq",
-            allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator="person_seq")
+    @GeneratedValue(generator="PERSON_SEQ",strategy=GenerationType.SEQUENCE)
+    @Column(updatable = false)
     private Long id;
 
     @Column(nullable = false, unique = true)

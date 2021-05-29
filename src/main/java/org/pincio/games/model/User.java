@@ -11,7 +11,7 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     /*
     @GeneratedValue(generator = "person-sequence-generator")
     @GenericGenerator(

@@ -7,7 +7,7 @@ import java.util.Date;
 public class RaceData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     private Date startDatetime;

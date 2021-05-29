@@ -1,4 +1,4 @@
-INSERT INTO PERSON(id,e_mail,name,password,photo_id,role,surname,token,valid) VALUES
+INSERT INTO PERSON(id,e-mail,name,password,photo_id,role,surname,token,valid) VALUES
 (1, 'test1@pincio.it', 'Daniele1', '$2a$10$HKL2IWagq68w4WiWwmKyp.N9RumfjlOgedCnjfYP20/sWG6/Mh/8W', null, 'USER', 'Test', null, true),
 (2, 'test2@pincio.it', 'Daniele2', '$2a$10$HKL2IWagq68w4WiWwmKyp.N9RumfjlOgedCnjfYP20/sWG6/Mh/8W', null, 'USER', 'Test', null, true),
 (3, 'test3@pincio.it', 'Daniele3', '$2a$10$HKL2IWagq68w4WiWwmKyp.N9RumfjlOgedCnjfYP20/sWG6/Mh/8W', null, 'USER', 'Test', null, true),

@@ -1,5 +1,4 @@
 mail:
-  smtp: ${TRUSTIFI_URL:''}
   key: ${TRUSTIFI_KEY:''}
   secret: ${TRUSTIFI_SECRET:''}
 
@@ -7,6 +6,13 @@ server:
   port: ${PORT:8080}
 
 spring:
+  mail:
+    host: ${TRUSTIFI_URL:''}
+    port: 587
+    username: <login user to smtp server>
+    password: <login password to smtp server>
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
   application:
     name: pincio-games
   http:

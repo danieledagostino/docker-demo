@@ -11,6 +11,8 @@ import java.util.Set;
 public class User {
 
     @Id
+    @GeneratedValue
+    /*
     @GeneratedValue(generator = "person-sequence-generator")
     @GenericGenerator(
             name = "person-sequence-generator",
@@ -21,6 +23,7 @@ public class User {
                     @Parameter(name = "increment_size", value = "1")
             }
     )
+    */
     private Long id;
 
     @Column(name = "e-mail", nullable = false, unique = true)

@@ -1,5 +1,8 @@
 package org.pincio.games.model;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -8,7 +11,16 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "person-sequence-generator")
+    @GenericGenerator(
+            name = "person-sequence-generator",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @Parameter(name = "sequence_name", value = "person-sequence-generator"),
+                    @Parameter(name = "initial_value", value = "6"),
+                    @Parameter(name = "increment_size", value = "1")
+            }
+    )
     private Long id;
 
     @Column(nullable = false, unique = true)

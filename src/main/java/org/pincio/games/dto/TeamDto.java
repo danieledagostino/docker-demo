@@ -23,6 +23,11 @@ public class TeamDto {
 
     private Long newJoiner;
 
+    public TeamDto(Long teamId, Long newJoiner) {
+        this.teamId = teamId;
+        this.newJoiner = newJoiner;
+    }
+
     public TeamDto(String teamName, String type, Integer partecipantNumber) {
         this.teamName = teamName;
         this.type = type;

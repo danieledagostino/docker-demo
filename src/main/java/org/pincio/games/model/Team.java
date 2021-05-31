@@ -13,7 +13,7 @@ public class Team {
     private String name;
 
     @OneToMany
-    private Set<User> users;
+    private Set<Person> persons;
 
     @OneToOne
     private RaceType type;
@@ -35,12 +35,12 @@ public class Team {
         this.id = id;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public Set<Person> getUsers() {
+        return persons;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setUsers(Set<Person> people) {
+        this.persons = people;
     }
 
     public RaceType getType() {

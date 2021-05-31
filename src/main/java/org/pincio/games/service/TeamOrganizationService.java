@@ -1,14 +1,12 @@
 package org.pincio.games.service;
 
 import org.pincio.games.dto.TeamDto;
-import org.pincio.games.dto.UserDto;
+import org.pincio.games.model.Person;
 import org.pincio.games.model.RaceType;
 import org.pincio.games.model.Team;
-import org.pincio.games.model.User;
 import org.pincio.games.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,7 +40,7 @@ public class TeamOrganizationService {
     public String joinTeam(TeamDto dto) {
 
         Team team = teamRepository.findById(dto.getTeamId()).get();
-        team.getUsers().add(new User(dto.getNewJoiner()));
+        team.getUsers().add(new Person(dto.getNewJoiner()));
 
         teamRepository.save(team);
 

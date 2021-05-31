@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "person")
-public class User {
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,9 +41,9 @@ public class User {
     @OneToMany
     private Set<Team> teams;
 
-    public User() {}
+    public Person() {}
 
-    public User(Long id) {
+    public Person(Long id) {
         this.id = id;
     }
 

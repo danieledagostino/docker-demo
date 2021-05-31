@@ -1,10 +1,15 @@
 package org.pincio.games.controller;
 
+import org.pincio.games.dto.MyUserPrincipal;
+import org.pincio.games.dto.PersonDto;
+import org.pincio.games.model.Person;
 import org.pincio.games.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -43,8 +48,10 @@ public class UserController {
     @RolesAllowed("USER")
     @GetMapping(value = "/home", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<String> home() {
+    public ResponseEntity<PersonDto> home() {
 
-        return new ResponseEntity<String>("", HttpStatus.OK);
+        PersonDto dto = userService.getCurrentUser();
+
+        return new ResponseEntity<PersonDto>(dto, HttpStatus.OK);
     }
 }

@@ -54,4 +54,12 @@ public class MyUserPrincipal implements UserDetails {
 
         return person.isValid();
     }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 }

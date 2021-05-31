@@ -2,10 +2,13 @@ package org.pincio.games.service;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.pincio.games.dto.MyUserPrincipal;
+import org.pincio.games.dto.PersonDto;
 import org.pincio.games.dto.UserDto;
 import org.pincio.games.model.Person;
 import org.pincio.games.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -76,6 +79,22 @@ public class UserService implements UserDetailsService {
     public String changeImageProfile(byte[] file) {
 
         return null;
+    }
+
+    public PersonDto getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        MyUserPrincipal myUserPrincipal = (MyUserPrincipal)authentication.getPrincipal();
+
+        Person person = myUserPrincipal.getPerson();
+
+        PersonDto dto = new PersonDto();
+        dto.setId(person.getId());
+        dto.setEmail(person.getEmail());
+        dto.setName(person.getName());
+        dto.setSurname(person.getSurname());
+        dto.setPhotoId(person.getPhotoId());
+
+        return dto;
     }
 
 }

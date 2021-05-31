@@ -46,7 +46,7 @@ public class TeamController {
     }
 
     @RolesAllowed("USER")
-    @GetMapping(value = "/join", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/join", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> join(@RequestBody TeamDto dto) {
 

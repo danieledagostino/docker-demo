@@ -18,7 +18,7 @@ public class RaceData {
     private byte[] startPhotogroup;
 
     @Lob
-    private byte[] endphotogroup;
+    private byte[] endPhotogroup;
 
     @OneToOne
     private Team team;
@@ -41,12 +41,12 @@ public class RaceData {
         this.startPhotogroup = startPhotogroup;
     }
 
-    public byte[] getEndphotogroup() {
-        return endphotogroup;
+    public byte[] getEndPhotogroup() {
+        return endPhotogroup;
     }
 
-    public void setEndphotogroup(byte[] endphotogroup) {
-        this.endphotogroup = endphotogroup;
+    public void setEndPhotogroup(byte[] endPhotogroup) {
+        this.endPhotogroup = endPhotogroup;
     }
 
     public Team getTeam() {

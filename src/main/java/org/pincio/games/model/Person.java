@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "person")
 public class Person {
 
     @Id
@@ -38,7 +37,11 @@ public class Person {
     private byte[] photoId;
     private boolean valid;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = "person_team", joinColumns = {
+            @JoinColumn(name = "person_id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "team_id")})
     private Set<Team> teams;
 
     public Person() {}

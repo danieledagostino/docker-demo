@@ -50,7 +50,7 @@ public class ClassificationService {
         raceData.setStartPhotogroup(dto.getStartPhotogroup());
 
         raceData.setEndDatetime(dto.getEndDatetime());
-        raceData.setEndphotogroup(dto.getEndphotogroup());
+        raceData.setEndPhotogroup(dto.getEndphotogroup());
 
         raceData.setKmDone(dto.getKmDone());
         raceData.setTeam(new Team(dto.getTeamId()));

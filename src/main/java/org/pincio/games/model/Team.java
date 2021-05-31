@@ -12,7 +12,11 @@ public class Team {
 
     private String name;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = "person_team", joinColumns = {
+            @JoinColumn(name = "team_id")},
+            inverseJoinColumns = {
+            @JoinColumn(name = "person_id")})
     private Set<Person> persons;
 
     @OneToOne

@@ -13,8 +13,8 @@ spring:
   datasource:
     platform: h2
     initialization-mode: always
-    url: jdbc:h2:~/test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
-    driverClassName: org.h2.Driver
+    #url: jdbc:h2:~/test #;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    #driverClassName: org.h2.Driver
   h2:
     console:
       enabled: true
@@ -24,11 +24,11 @@ spring:
     #  password:
     #  driverClassName: org.h2.Driver
   jpa:
-    #databasePlatform: org.hibernate.dialect.H2Dialect
+    databasePlatform: org.hibernate.dialect.H2Dialect
     database: H2
     hibernate:
-      ddl-auto: update
-      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: create-drop
+      #dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     generate-ddl: true
 #logging:

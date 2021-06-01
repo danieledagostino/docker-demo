@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.security.RolesAllowed;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -51,7 +52,15 @@ public class UserController {
     public ResponseEntity<PersonDto> home() {
 
         PersonDto dto = userService.getCurrentUser();
-
+        dto.setPhotoId(null);
+        dto.setPhotoUrl("/profileImage");
         return new ResponseEntity<PersonDto>(dto, HttpStatus.OK);
+    }
+
+    @RolesAllowed("USER")
+    @GetMapping(value = "/profileImage")
+    public @ResponseBody byte[] getProfileImage() {
+        PersonDto dto = userService.getCurrentUser();
+        return dto.getPhotoId();
     }
 }

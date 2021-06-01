@@ -6,6 +6,9 @@ mail.service:
 spring:
   application:
     name: pincio-games
+  freemarker:
+    template-loader-path: classpath:/templates
+    suffix: .ftl
   http:
     multipart:
       enabled: true

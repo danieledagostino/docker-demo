@@ -11,6 +11,8 @@ public class PersonDto {
     private String name;
     private String surname;
     private byte[] photoId;
+    private String photoUrl;
+    private String token;
 
     public Long getId() {
         return id;
@@ -50,5 +52,21 @@ public class PersonDto {
 
     public void setPhotoId(byte[] photoId) {
         this.photoId = photoId;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

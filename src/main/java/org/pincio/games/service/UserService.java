@@ -57,13 +57,17 @@ public class UserService implements UserDetailsService {
         //sendEmail
     }
 
-    public void emailConfirmation(String token) {
+    public boolean emailConfirmation(String token) {
         Person person = userRepository.findByToken(token);
 
         if (person != null) {
             person.setToken("");
             person.setValid(true);
             userRepository.save(person);
+
+            return true;
+        } else {
+            return false;
         }
     }
 

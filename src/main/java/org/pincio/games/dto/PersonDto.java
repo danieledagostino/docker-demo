@@ -14,6 +14,13 @@ public class PersonDto {
     private String photoUrl;
     private String token;
 
+    public PersonDto(){}
+
+    public PersonDto(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

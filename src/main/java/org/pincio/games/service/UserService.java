@@ -2,11 +2,14 @@ package org.pincio.games.service;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.pincio.games.dto.MyUserPrincipal;
+import org.pincio.games.dto.PagePersonDto;
 import org.pincio.games.dto.PersonDto;
 import org.pincio.games.dto.UserDto;
 import org.pincio.games.model.Person;
 import org.pincio.games.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +17,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -101,4 +109,32 @@ public class UserService implements UserDetailsService {
         return dto;
     }
 
+    public byte[] findUserImageProfile(Long userId) {
+        Person person = userRepository.findById(userId).get();
+
+        return person.getPhotoId();
+    }
+
+    public List<PersonDto> getAllUsersByRaceType(Long raceType) {
+
+        //userRepository.findAllByRaceType();
+
+        return null;
+    }
+
+    public PagePersonDto getAllFreeUsers(int page, int size) {
+        Page<Person> pages = userRepository.findByTeamsIsEmpty(PageRequest.of(page, size));
+
+        PagePersonDto pagePersonDto = new PagePersonDto();
+
+        pagePersonDto.setTotalPages(pages.getTotalPages());
+        pagePersonDto.setTotalElements(pages.getNumberOfElements());
+
+        List<PersonDto> list = null;
+
+        list = pages.get().map( p -> new PersonDto(p.getId(), p.getName())).collect(Collectors.toList());
+        pagePersonDto.setPersonDtoList(list);
+
+        return pagePersonDto;
+    }
 }

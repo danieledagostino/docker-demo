@@ -16,7 +16,7 @@ spring:
   datasource:
     platform: h2
     initialization-mode: always
-    #url: jdbc:h2:~/test #;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    #url: jdbc:h2:mem:dbpincio;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE SCHEMA IF NOT EXISTS PINCIO\\;SET SCHEMA=PINCIO
     #driverClassName: org.h2.Driver
   h2:
     console:

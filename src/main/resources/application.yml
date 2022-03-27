@@ -1,3 +1,7 @@
+spring:
+  profiles:
+    active: "dev"
+
 mail.service:
   host: ${TRUSTIFI_URL:''}
   key: ${TRUSTIFI_KEY:''}
@@ -6,13 +10,63 @@ mail.service:
 server:
   port: ${PORT:8080}
 
+security:
+  firebase-props:
+    database-url: ${FIREBASE_DATABASE}
+    enable-strict-server-session: false
+    enable-check-session-revoked: false
+    enable-logout-everywhere: false
+    session-expiry-in-days: 5
+  cookie-props:
+    max-age-in-minutes: 7200
+    http-only: true
+    secure: true
+    domain: ${DOMAIN}
+    path: /
+  allow-credentials: true
+  allowed-origins:
+    - https://${DOMAIN}
+    - http://localhost:3000
+  allowed-methods:
+    - GET
+    - POST
+    - PUT
+    - PATCH
+    - DELETE
+    - OPTIONS
+  allowed-headers:
+    - Authorization
+    - Origin
+    - Content-Type
+    - Accept
+    - Accept-Encoding
+    - Accept-Language
+    - Access-Control-Allow-Origin
+    - Access-Control-Allow-Headers
+    - Access-Control-Request-Method
+    - X-Requested-With
+    - X-Auth-Token
+    - X-Xsrf-Token
+    - Cache-Control
+    - Id-Token
+  allowed-public-apis:
+    - /favicon.ico
+    - /session/login
+    - /public/**
+  exposed-headers:
+    - X-Xsrf-Token
+
+---
+
 spring:
   application:
     name: pincio-games
   http:
     multipart:
       enabled: true
-  profiles: prod
+  config:
+    activate:
+      on-profile: prod
   datasource:
     initialization-mode: always
     password: ${DB_PW}
@@ -29,6 +83,44 @@ spring:
     databasePlatform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: ${SPRING_JPA_HIBERNATE_DDL-AUTO}
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+
+---
+
+spring:
+  application:
+    name: pincio-games
+  http:
+    multipart:
+      enabled: true
+  config:
+    activate:
+      on-profile: dev
+  h2:
+    console:
+      enabled: true
+  datasource:
+    #platform: h2
+    #initialization-mode: always
+    password: pass
+    url: jdbc:h2:mem:myDb
+    username: user
+    driverClassName: org.h2.Driver
+    hikari:
+      #connection-timeout: 30000
+      idle-timeout: 120000
+      max-lifetime: 120000
+      maximum-pool-size: 3
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create
     show-sql: true
     generate-ddl: true
     properties:

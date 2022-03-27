@@ -49,7 +49,7 @@ public class UserController {
         return new ResponseEntity<String>("", HttpStatus.OK);
     }
 
-    @RolesAllowed("USER")
+    //@RolesAllowed("USER")
     @GetMapping(value = "/home", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<PersonDto> home() {

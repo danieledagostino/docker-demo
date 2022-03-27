@@ -24,7 +24,7 @@ public class TeamController {
     @ResponseBody
     public ResponseEntity<String> check() {
 
-        return new ResponseEntity<>("All works", HttpStatus.OK);
+        return new ResponseEntity<String>("All works", HttpStatus.OK);
     }
 
     @RolesAllowed("MOD")

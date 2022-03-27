@@ -21,4 +21,6 @@ public interface UserRepository extends PagingAndSortingRepository<Person, Long>
 
     //@Query("select from Person p where p.teams ")
     Page<Person> findByTeamsIsEmpty(Pageable pageable);
+
+    Person findByEmailAndPassword(String email, String password);
 }

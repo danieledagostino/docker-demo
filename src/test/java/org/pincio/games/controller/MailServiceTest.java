@@ -1,8 +1,7 @@
 package org.pincio.games.controller;
 
 import freemarker.template.TemplateException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.pincio.games.dto.Mail;
 import org.pincio.games.dto.PersonDto;
 import org.pincio.games.dto.Recipient;
@@ -16,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.io.IOException;
 import java.util.Arrays;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
 public class MailServiceTest {

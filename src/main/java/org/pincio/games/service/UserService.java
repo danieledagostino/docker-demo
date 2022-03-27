@@ -1,5 +1,8 @@
 package org.pincio.games.service;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.UserRecord;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.pincio.games.dto.MyUserPrincipal;
 import org.pincio.games.dto.PagePersonDto;
@@ -44,7 +47,12 @@ public class UserService implements UserDetailsService {
             throw new Exception("password not match");
         }
 
-        Person newPerson = new Person();
+        UserRecord.CreateRequest firebaseUser = new UserRecord.CreateRequest();
+        firebaseUser.setEmail(user.getEmail());
+        firebaseUser.setPassword(user.getPassword());
+        UserRecord userRecord = FirebaseAuth.getInstance().createUser(firebaseUser);
+
+        Person newPerson = new Person(userRecord.getUid());
         newPerson.setEmail(user.getEmail());
         newPerson.setName(user.getFirstName());
         newPerson.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));

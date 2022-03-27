@@ -21,7 +21,7 @@ public class RaceDataController {
     @Autowired
     ClassificationService classificationService;
 
-    @RolesAllowed("USER")
+    //@RolesAllowed("USER")
     @GetMapping(value = "/classificationByType/{raceType}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<List<TeamDto>> classificationByRaceType(@PathVariable("raceType") Integer raceType) {
@@ -30,7 +30,7 @@ public class RaceDataController {
                 classificationService.getLastByRace(raceType), HttpStatus.OK);
     }
 
-    @RolesAllowed("USER")
+    //@RolesAllowed("USER")
     @PostMapping(value = "/insertData", produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = { MediaType.APPLICATION_JSON_VALUE,MediaType.MULTIPART_FORM_DATA_VALUE})
     @ResponseBody
@@ -51,7 +51,7 @@ public class RaceDataController {
         return new ResponseEntity<String>(response, HttpStatus.OK);
     }
 
-    @RolesAllowed("USER")
+    //@RolesAllowed("USER")
     @GetMapping(value = "/types", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<List<RaceType>> raceTypes() {

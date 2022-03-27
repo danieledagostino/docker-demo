@@ -36,7 +36,7 @@ public class TeamController {
                 service.loadAllTeams(), HttpStatus.OK);
     }
 
-    @RolesAllowed("USER")
+    //@RolesAllowed("USER")
     @GetMapping(value = "/findAll/{raceType}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<List<TeamDto>> findAllByRaceType(@PathVariable("raceType") Long raceType) {
@@ -45,7 +45,7 @@ public class TeamController {
                 service.loadAllTeamsByRaceType(raceType), HttpStatus.OK);
     }
 
-    @RolesAllowed("USER")
+    //@RolesAllowed("USER")
     @PostMapping(value = "/join", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> join(@RequestBody TeamDto dto) {

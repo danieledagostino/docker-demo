@@ -26,7 +26,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RolesAllowed("USER")
+    //@RolesAllowed("USER")
     @PostMapping(value = "/uploadImageProfile", produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
@@ -41,7 +41,7 @@ public class UserController {
         return new ResponseEntity<String>(response, HttpStatus.OK);
     }
 
-    @RolesAllowed("USER")
+    //@RolesAllowed("USER")
     @PostMapping(value = "/passwordChange", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> passwordChange(@RequestParam("file") MultipartFile file) {
@@ -49,7 +49,7 @@ public class UserController {
         return new ResponseEntity<String>("", HttpStatus.OK);
     }
 
-    //@RolesAllowed("USER")
+    ////@RolesAllowed("USER")
     @GetMapping(value = "/home", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<PersonDto> home() {
@@ -60,21 +60,21 @@ public class UserController {
         return new ResponseEntity<PersonDto>(dto, HttpStatus.OK);
     }
 
-    @RolesAllowed("USER")
+    //@RolesAllowed("USER")
     @GetMapping(value = "/profileImage")
     public @ResponseBody byte[] getProfileImage() {
         PersonDto dto = userService.getCurrentUser();
         return dto.getPhotoId();
     }
 
-    @RolesAllowed("USER")
+    //@RolesAllowed("USER")
     @GetMapping(value = "/profileImage/{userId}")
     public @ResponseBody byte[] getUserProfileImage(@PathVariable("userId") Long userId) {
         byte[] photoId = userService.findUserImageProfile(userId);
         return photoId;
     }
 
-    @RolesAllowed("USER")
+    //@RolesAllowed("USER")
     @GetMapping(value = "/allFreeUsers", params = { "page", "size" })
     public ResponseEntity<PagePersonDto> allFreeUsers(@RequestParam("page") int page,
                                                         @RequestParam("size") int size, UriComponentsBuilder uriBuilder) {

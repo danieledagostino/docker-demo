@@ -25,8 +25,6 @@ public class Person {
     */
     private Long id;
 
-    private String uid;
-
     @Column(nullable = false, unique = true)
     private String email;
     private String name;
@@ -47,10 +45,6 @@ public class Person {
     private Set<Team> teams;
 
     public Person() {}
-
-    public Person(String uid) {
-        this.uid = uid;
-    }
 
     public Person(Long id) {
         this.id = id;
@@ -134,13 +128,5 @@ public class Person {
 
     public void setTeams(Set<Team> teams) {
         this.teams = teams;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
     }
 }

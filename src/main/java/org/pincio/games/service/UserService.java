@@ -52,7 +52,7 @@ public class UserService implements UserDetailsService {
         firebaseUser.setPassword(user.getPassword());
         UserRecord userRecord = FirebaseAuth.getInstance().createUser(firebaseUser);
 
-        Person newPerson = new Person(userRecord.getUid());
+        Person newPerson = new Person();
         newPerson.setEmail(user.getEmail());
         newPerson.setName(user.getFirstName());
         newPerson.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));

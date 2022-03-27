@@ -88,7 +88,6 @@ public class SecurityFilter extends OncePerRequestFilter {
         Person user = null;
         if (decodedToken != null) {
             user = new Person();
-            user.setUid(decodedToken.getUid());
             user.setName(decodedToken.getName());
             user.setEmail(decodedToken.getEmail());
             //user.setPicture(decodedToken.getPicture());

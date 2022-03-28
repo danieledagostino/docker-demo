@@ -25,16 +25,14 @@ public class Person {
     */
     private Long id;
 
+    private String uid;
+
     @Column(nullable = false, unique = true)
     private String email;
     private String name;
     private String surname;
-    private String password;
     private String role;
-    private String token;
 
-    @Lob
-    private byte[] photoId;
     private boolean valid;
 
     @ManyToMany
@@ -82,22 +80,6 @@ public class Person {
         this.surname = surname;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public byte[] getPhotoId() {
-        return photoId;
-    }
-
-    public void setPhotoId(byte[] photoId) {
-        this.photoId = photoId;
-    }
-
     public boolean isValid() {
         return valid;
     }
@@ -114,19 +96,19 @@ public class Person {
         this.role = role;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public Set<Team> getTeams() {
         return teams;
     }
 
     public void setTeams(Set<Team> teams) {
         this.teams = teams;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

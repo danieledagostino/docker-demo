@@ -58,63 +58,28 @@ public class UserService implements UserDetailsService {
             Person newPerson = new Person();
             newPerson.setEmail(user.getEmail());
             newPerson.setName(user.getFirstName());
-            newPerson.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
             newPerson.setSurname(user.getLastName());
             newPerson.setRole("USER");
             //newUser.setValid(false); TODO to uncomment in prod
             newPerson.setValid(true);
-            newPerson.setPhotoId(user.getProfileImage());
 
             newPerson = userRepository.save(newPerson);
         }
-    }
-
-    public boolean emailConfirmation(String token) {
-        Person person = userRepository.findByToken(token);
-
-        if (person != null) {
-            person.setToken("");
-            person.setValid(true);
-            userRepository.save(person);
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public String changePassword(UserDto user) {
-
-        return null;
-    }
-
-    public void askNewPassword(String email) {
-
-    }
-
-    public String changeImageProfile(byte[] file) {
-
-        return null;
     }
 
     public PersonDto getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Person person = (Person)authentication.getPrincipal();
 
+        person = userRepository.findByUid(person.getUid());
+
         PersonDto dto = new PersonDto();
         dto.setId(person.getId());
         dto.setEmail(person.getEmail());
         dto.setName(person.getName());
         dto.setSurname(person.getSurname());
-        dto.setPhotoId(person.getPhotoId());
 
         return dto;
-    }
-
-    public byte[] findUserImageProfile(Long userId) {
-        Person person = userRepository.findById(userId).get();
-
-        return person.getPhotoId();
     }
 
     public List<PersonDto> getAllUsersByRaceType(Long raceType) {

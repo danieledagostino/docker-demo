@@ -15,12 +15,10 @@ public interface UserRepository extends PagingAndSortingRepository<Person, Long>
 
     Person findByEmail(String email);
 
-    Person findByToken(String token);
-
     //List<Person> findAllByRaceType();
 
     //@Query("select from Person p where p.teams ")
     Page<Person> findByTeamsIsEmpty(Pageable pageable);
 
-    Person findByEmailAndPassword(String email, String password);
+    Person findByUid(String uid);
 }

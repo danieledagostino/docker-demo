@@ -19,15 +19,7 @@ public class TeamController {
     @Autowired
     TeamOrganizationService service;
 
-    @RolesAllowed("MOD")
-    @GetMapping(value = "/check", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ResponseEntity<String> check() {
-
-        return new ResponseEntity<String>("All works", HttpStatus.OK);
-    }
-
-    @RolesAllowed("MOD")
+    //@RolesAllowed("MOD")
     @GetMapping(value = "/findAll", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<List<TeamDto>> findAll() {

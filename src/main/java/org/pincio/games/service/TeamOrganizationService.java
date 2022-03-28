@@ -27,6 +27,16 @@ public class TeamOrganizationService {
                     t.getUsers().size())).collect(Collectors.toList());
     }
 
+    public List<TeamDto> loadAllTeamsByCountry() {
+
+        List<Team> teams = teamRepository.findByCountry("IT");
+
+        return teams.stream().map( t -> new TeamDto(
+                t.getName(),
+                t.getType().getName(),
+                t.getUsers().size())).collect(Collectors.toList());
+    }
+
     public List<TeamDto> loadAllTeamsByRaceType(Long raceTypeId) {
 
         List<Team> teams = teamRepository.findByType(new RaceType(raceTypeId));

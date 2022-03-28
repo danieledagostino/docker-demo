@@ -41,7 +41,7 @@ public class UserService implements UserDetailsService {
         return new MyUserPrincipal(person);
     }
 
-    public Long insertNewUser(UserDto user) throws Exception {
+    public void insertNewUser(UserDto user) throws Exception {
 
         if (!user.getPassword().equals(user.getMatchingPassword())) {
             throw new Exception("password not match");
@@ -52,25 +52,21 @@ public class UserService implements UserDetailsService {
         firebaseUser.setPassword(user.getPassword());
         UserRecord userRecord = FirebaseAuth.getInstance().createUser(firebaseUser);
 
-        Person newPerson = new Person();
-        newPerson.setEmail(user.getEmail());
-        newPerson.setName(user.getFirstName());
-        newPerson.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        newPerson.setSurname(user.getLastName());
-        newPerson.setRole("USER");
-        //newUser.setValid(false); TODO to uncomment in prod
-        newPerson.setValid(true);
-        newPerson.setPhotoId(user.getProfileImage());
+        if (userRecord != null) {
+            FirebaseAuth.getInstance().generateEmailVerificationLinkAsync(user.getEmail());
 
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()[{]};:";
-        String token = RandomStringUtils.random( 15, characters );
+            Person newPerson = new Person();
+            newPerson.setEmail(user.getEmail());
+            newPerson.setName(user.getFirstName());
+            newPerson.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+            newPerson.setSurname(user.getLastName());
+            newPerson.setRole("USER");
+            //newUser.setValid(false); TODO to uncomment in prod
+            newPerson.setValid(true);
+            newPerson.setPhotoId(user.getProfileImage());
 
-        newPerson.setToken(token);
-
-        newPerson = userRepository.save(newPerson);
-
-        return newPerson.getId();
-        //sendEmail
+            newPerson = userRepository.save(newPerson);
+        }
     }
 
     public boolean emailConfirmation(String token) {
@@ -103,9 +99,7 @@ public class UserService implements UserDetailsService {
 
     public PersonDto getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        MyUserPrincipal myUserPrincipal = (MyUserPrincipal)authentication.getPrincipal();
-
-        Person person = myUserPrincipal.getPerson();
+        Person person = (Person)authentication.getPrincipal();
 
         PersonDto dto = new PersonDto();
         dto.setId(person.getId());

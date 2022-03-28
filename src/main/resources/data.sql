@@ -8,9 +8,10 @@ INSERT INTO RACE_TYPE VALUES(1, 'Skates', 25);
 INSERT INTO RACE_TYPE VALUES(2, 'Bike', 10);
 INSERT INTO RACE_TYPE VALUES(3, 'Motorbike', 1.5);
 
-INSERT INTO TEAM(id, name, type_id) VALUES(1, 'pirati', 1);
-INSERT INTO TEAM(id, name, type_id) VALUES(2, 'PincioBest', 1);
-INSERT INTO TEAM(id, name, type_id) VALUES(3, 'irriducibili', 1);
+INSERT INTO TEAM(id, name, type_id, country) VALUES(1, 'pirati', 1, 'IT');
+INSERT INTO TEAM(id, name, type_id, country) VALUES(2, 'PincioBest', 1, 'IT');
+INSERT INTO TEAM(id, name, type_id, country) VALUES(3, 'irriducibili', 1, 'IT');
+INSERT INTO TEAM(id, name, type_id, country) VALUES(4, 'Los parasidos', 1, 'BL');
 
 INSERT INTO PERSON_TEAM(team_id, person_id) VALUES(1, 1);
 INSERT INTO PERSON_TEAM(team_id, person_id) VALUES(1, 2);

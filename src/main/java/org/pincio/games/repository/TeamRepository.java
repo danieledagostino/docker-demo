@@ -9,4 +9,6 @@ import java.util.List;
 public interface TeamRepository extends JpaRepository<Team, Long> {
 
     public List<Team> findByType(RaceType type);
+
+    public List<Team> findByCountry(String country);
 }

@@ -10,6 +10,8 @@ spring:
   jpa:
     defer-datasource-initialization: true
 
+google.credential: ${GOOGLE_CREDENTIAL}
+
 security:
   firebase-props:
     database-url: ${FIREBASE_DATABASE}

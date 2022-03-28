@@ -1,5 +1,10 @@
 package org.pincio.games.configuration.security;
 
+import com.google.api.gax.core.FixedCredentialsProvider;
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.auth.oauth2.ServiceAccountCredentials;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
 import org.pincio.games.configuration.security.model.Credentials;
 import org.pincio.games.configuration.security.model.SecurityProperties;
 import org.pincio.games.model.Person;
@@ -7,6 +12,8 @@ import org.pincio.games.service.CookieService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,12 +22,15 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.security.Principal;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,6 +53,22 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     @Autowired
     SecurityProperties securityProps;
+
+    @Value("${google.credential}")
+    private String serviceAccount;
+
+    @PostConstruct
+    public void init() {
+        FirebaseOptions options = null;
+        try {
+            options = new FirebaseOptions.Builder()
+                    .setCredentials(GoogleCredentials.fromStream(new ByteArrayInputStream(serviceAccount.getBytes())))
+                    .build();
+            FirebaseApp.initializeApp(options);
+        } catch (IOException e) {
+            log.error("Firebase configuration non valid or not found", e);
+        }
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

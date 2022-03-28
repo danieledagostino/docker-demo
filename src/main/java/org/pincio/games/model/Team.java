@@ -25,6 +25,8 @@ public class Team {
     @OneToMany
     private Set<RaceData> raceDatas;
 
+    private String country;
+
     public Team(){}
 
     public Team(Integer teamId) {
@@ -69,5 +71,13 @@ public class Team {
 
     public void setRaceDatas(Set<RaceData> raceDatas) {
         this.raceDatas = raceDatas;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

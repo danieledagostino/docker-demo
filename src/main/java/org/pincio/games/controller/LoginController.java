@@ -44,23 +44,4 @@ public class LoginController {
 		return new ResponseEntity<String>("Subscribed", HttpStatus.OK);
 	}
 
-	@GetMapping(value = "/newPassword", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public ResponseEntity<String> newPassword(@RequestBody String email) {
-
-		return new ResponseEntity<String>("", HttpStatus.OK);
-	}
-
-	@GetMapping(value = "/tokenValidation/{token}", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public ResponseEntity<String> tokenValidation(@PathVariable("token") String token) {
-
-		Boolean response = userService.emailConfirmation(token);
-
-		if (response) {
-			return new ResponseEntity<String>("Email confirmed. Get back to the app.", HttpStatus.OK);
-		} else {
-			return new ResponseEntity<String>("Email not confirmed. Please check the url you received", HttpStatus.OK);
-		}
-	}
 }

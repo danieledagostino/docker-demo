@@ -46,7 +46,7 @@ public class MailService {
         if ("localhost".equals(hostname)) {
             port = ":8080";
         }
-        templateModel.put("tokenValidationUrl", hostname + port + "/api/public/tokenValidation/" + dto.getToken());
+        templateModel.put("tokenValidationUrl", hostname + port + "/api/public/tokenValidation/");
         templateModel.put("user", dto);
 
         String htmlBody = FreeMarkerTemplateUtils.processTemplateIntoString(freemarkerTemplate, templateModel);

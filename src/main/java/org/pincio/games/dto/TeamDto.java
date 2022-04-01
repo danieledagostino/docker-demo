@@ -23,6 +23,9 @@ public class TeamDto {
 
     private Long newJoiner;
 
+    public TeamDto() {
+    }
+
     public TeamDto(Long teamId, Long newJoiner) {
         this.teamId = teamId;
         this.newJoiner = newJoiner;

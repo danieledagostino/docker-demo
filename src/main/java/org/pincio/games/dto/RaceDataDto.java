@@ -23,6 +23,9 @@ public class RaceDataDto {
 
     private Integer kmDone;
 
+    public RaceDataDto() {
+    }
+
     public Date getStartDatetime() {
         return startDatetime;
     }

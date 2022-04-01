@@ -10,9 +10,6 @@ public class PersonDto {
     private String email;
     private String name;
     private String surname;
-    private byte[] photoId;
-    private String photoUrl;
-    private String token;
 
     public PersonDto(){}
 
@@ -53,27 +50,4 @@ public class PersonDto {
         this.surname = surname;
     }
 
-    public byte[] getPhotoId() {
-        return photoId;
-    }
-
-    public void setPhotoId(byte[] photoId) {
-        this.photoId = photoId;
-    }
-
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 }

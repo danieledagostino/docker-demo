@@ -9,6 +9,10 @@ server:
 spring:
   profiles:
     active: "prod"
+  cloud:
+    gcp:
+      logging:
+        enabled: true
   jpa:
     defer-datasource-initialization: true
 

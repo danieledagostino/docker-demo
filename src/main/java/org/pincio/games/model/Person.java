@@ -10,7 +10,7 @@ import java.util.Set;
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     /*
     @GeneratedValue(generator = "person-sequence-generator")
     @GenericGenerator(

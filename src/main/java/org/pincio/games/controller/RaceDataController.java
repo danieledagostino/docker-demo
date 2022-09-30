@@ -22,7 +22,7 @@ public class RaceDataController {
     ClassificationService classificationService;
 
     //@RolesAllowed("USER")
-    @GetMapping(value = "/classificationByType/{raceType}", produces = MediaType.APPLICATION_JSON_VALUE)
+        @GetMapping(value = "/classificationByType/{raceType}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<List<TeamDto>> classificationByRaceType(@PathVariable("raceType") Integer raceType) {
 
